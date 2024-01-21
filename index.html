@@ -25,12 +25,50 @@
   <script src="https://code.jquery.com/jquery-3.6.3.min.js"
     integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
   <!-- End - Fancybox Scripts -->
+
+  <script>
+    const landscapeImages = [];
+    const portraitImages = [];
+
+    // Populating landscapeImages 
+    for (let i = 1; i <= 18; i++) {
+      landscapeImages.push(`photo${i}.jpg`);
+    }
+
+    // Populating portraitImages
+    for (let i = 1; i <= 6; i++) {
+      portraitImages.push(`photo${i}.jpg`);
+    }
+
+    function getRandomImage(imagesArray) {
+      const randomIndex = Math.floor(Math.random() * imagesArray.length);
+      return imagesArray.splice(randomIndex, 1)[0]; // Remove the selected image from the array
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const landscapeImagesElems = document.querySelectorAll('.landscape-container');
+      const portraitImagesElems = document.querySelectorAll('.portrait-container');
+
+      landscapeImagesElems.forEach(img => {
+        const newImage = `assets/Photos/Landscape/${getRandomImage(landscapeImages)}`;
+        img.src = newImage;
+        img.closest('a').href = newImage; // Update the href attribute of the parent <a> element
+      });
+
+      portraitImagesElems.forEach(img => {
+        const newImage = `assets/Photos/Portrait/${getRandomImage(portraitImages)}`;
+        img.src = newImage;
+        img.closest('a').href = newImage; // Update the href attribute of the parent <a> element
+      });
+    });
+  </script>
+
 </head>
 
 <body
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
   <!-- Content -->
-  <div class="container mx-auto">
+  <div class="photo-container container mx-auto">
     <h1 class="text-4xl pt-10 pb-8"><b>Will Powell | Photography</b></h1>
     <section class="text-neutral-700">
       <div class="container w-full">
@@ -38,28 +76,28 @@
           <div class="flex w-full md:w-1/2 flex-wrap">
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo1.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Portrait/photo1.jpg" data-fancybox="gallery">
                   <img alt="Royal Albert Hall, London"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo1.jpg" />
+                    class="portrait-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Portrait/photo1.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo2.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Portrait/photo2.jpg" data-fancybox="gallery">
                   <img alt="Stockholm, Sweden"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo2.jpg" />
+                    class="portrait-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Portrait/photo2.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo3.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo3.jpg" data-fancybox="gallery">
                   <img alt="Great Pulteney Street, Bath, UK"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo3.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo3.jpg" />
                 </a>
               </div>
             </div>
@@ -67,46 +105,46 @@
           <div class="flex w-full md:w-1/2 flex-wrap">
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo4.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo4.jpg" data-fancybox="gallery">
                   <img alt="Briancon, France"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo4.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo4.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo5.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo5.jpg" data-fancybox="gallery">
                   <img alt="Natural Histroy Museum, London"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo5.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo5.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo6.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo6.jpg" data-fancybox="gallery">
                   <img alt="Binlik Koyu, Fethiye, Turkey"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo6.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo6.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo7.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo7.jpg" data-fancybox="gallery">
                   <img alt="Mt Etna, Sicily"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo7.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo7.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo8.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo8.jpg" data-fancybox="gallery">
                   <img alt="Stockholm, Sweden"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo8.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo8.jpg" />
                 </a>
               </div>
             </div>
@@ -115,47 +153,47 @@
           <div class="flex w-full md:w-1/2 flex-wrap">
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo9.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo9.jpg" data-fancybox="gallery">
                   <img alt="Nafplion, Greece"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo9.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo9.jpg" />
                 </a>
               </div>
             </div>
 
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo10.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo10.jpg" data-fancybox="gallery">
                   <img alt="Briancon, France"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo10.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo10.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full 2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo11.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo11.jpg" data-fancybox="gallery">
                   <img alt="Stockholm, Sweden"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo11.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo11.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo12.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo12.jpg" data-fancybox="gallery">
                   <img alt="The City of Arts and Sciences, Valencia, Spain"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo12.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo12.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo13.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo13.jpg" data-fancybox="gallery">
                   <img alt="Trapani, Sicily"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo13.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo13.jpg" />
                 </a>
               </div>
             </div>
@@ -163,65 +201,65 @@
           <div class="flex w-full md:w-1/2 flex-wrap">
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo14.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Portrait/photo14.jpg" data-fancybox="gallery">
                   <img alt="The City of Arts and Sciences, Valencia, Spain"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo14.jpg" />
+                    class="portrait-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Portrait/photo14.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo15.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Portrait/photo15.jpg" data-fancybox="gallery">
                   <img alt="Valencia, Spain"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo15.jpg" />
+                    class="portrait-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Portrait/photo15.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-ful  l">
-                <a href="assets/Photos/photo16.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo16.jpg" data-fancybox="gallery">
                   <img alt="The Albert Memorial"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo16.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo16.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-ful  l">
-                <a href="assets/Photos/photo17.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo17.jpg" data-fancybox="gallery">
                   <img alt="Parco Archeologico Neopolis, Syracuse, Sicily"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo17.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo17.jpg" />
                 </a>
               </div>
             </div>
 
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo19.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo19.jpg" data-fancybox="gallery">
                   <img alt="Lisbon, Portugal"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo19.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo19.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo20.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo20.jpg" data-fancybox="gallery">
                   <img alt="Lisbon, Portugal"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo20.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo20.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo18.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo18.jpg" data-fancybox="gallery">
                   <img alt="Lisbon, Portugal"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo18.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo18.jpg" />
                 </a>
               </div>
             </div>
@@ -230,19 +268,19 @@
           <div class="flex w-full md:w-1/2 flex-wrap">
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo22.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Portrait/photo22.jpg" data-fancybox="gallery">
                   <img alt="Praia Do Guincho, Portugal"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo22.jpg" />
+                    class="portrait-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Portrait/photo22.jpg" />
                 </a>
               </div>
             </div>
             <div class="w-full md:w-1/2 p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo21.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Portrait/photo21.jpg" data-fancybox="gallery">
                   <img alt="Praia Do Guincho, Portugal"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo21.jpg" />
+                    class="portrait-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Portrait/photo21.jpg" />
                 </a>
               </div>
             </div>
@@ -250,10 +288,10 @@
           <div class="flex w-full md:w-1/2 flex-wrap">
             <div class="w-full p-1">
               <div class="overflow-hidden h-full w-full">
-                <a href="assets/Photos/photo23.jpg" data-fancybox="gallery">
+                <a href="assets/Photos/Landscape/photo23.jpg" data-fancybox="gallery">
                   <img alt="Praia Do Guincho, Portugal"
-                    class="block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
-                    src="assets/Photos/photo23.jpg" />
+                    class="landscape-container block h-full w-full object-cover object-center opacity-0 animate-fade-in transition duration-500 transform scale-100 hover:scale-110"
+                    src="assets/Photos/Landscape/photo23.jpg" />
                 </a>
               </div>
             </div>
