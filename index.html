@@ -18,7 +18,12 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Montagu+Slab:opsz,wght@16..144,100;16..144,200;16..144,300;16..144,400;16..144,500;16..144,600;16..144,700&display=swap"
     rel="stylesheet" />
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+
   <!-- End - Fonts -->
+
+
   <!-- Start - Fancybox Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css" />
@@ -30,38 +35,50 @@
     const landscapeImages = [];
     const portraitImages = [];
 
-    // Populating landscapeImages 
-    for (let i = 1; i <= 18; i++) {
-      landscapeImages.push(`photo${i}.jpg`);
-    }
+    function populateImageArrays() {
+      // Clear existing arrays
+      landscapeImages.length = 0;
+      portraitImages.length = 0;
 
-    // Populating portraitImages
-    for (let i = 1; i <= 6; i++) {
-      portraitImages.push(`photo${i}.jpg`);
+      // Adjust these numbers according to the actual number of images you have
+      for (let i = 1; i <= 17; i++) {
+        landscapeImages.push(`photo${i}.jpg`);
+      }
+      for (let i = 1; i <= 6; i++) {
+        portraitImages.push(`photo${i}.jpg`);
+      }
     }
 
     function getRandomImage(imagesArray) {
       const randomIndex = Math.floor(Math.random() * imagesArray.length);
-      return imagesArray.splice(randomIndex, 1)[0]; // Remove the selected image from the array
+      return imagesArray.splice(randomIndex, 1)[0];
     }
 
-    document.addEventListener('DOMContentLoaded', function () {
+    function updateImages() {
+      populateImageArrays();
+
       const landscapeImagesElems = document.querySelectorAll('.landscape-container');
       const portraitImagesElems = document.querySelectorAll('.portrait-container');
 
       landscapeImagesElems.forEach(img => {
         const newImage = `assets/Photos/Landscape/${getRandomImage(landscapeImages)}`;
         img.src = newImage;
-        img.closest('a').href = newImage; // Update the href attribute of the parent <a> element
+        img.closest('a').href = newImage;
       });
 
       portraitImagesElems.forEach(img => {
         const newImage = `assets/Photos/Portrait/${getRandomImage(portraitImages)}`;
         img.src = newImage;
-        img.closest('a').href = newImage; // Update the href attribute of the parent <a> element
+        img.closest('a').href = newImage;
       });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      updateImages();
+      document.getElementById('refresh-icon').addEventListener('click', updateImages);
     });
   </script>
+
 
 </head>
 
@@ -69,7 +86,14 @@
   class="dark:bg-black bg-white h-screen text-black dark:text-white px-5 md:px-20 opacity-0 animate-fade-in transition duration-500">
   <!-- Content -->
   <div class="photo-container container mx-auto">
-    <h1 class="text-4xl pt-10 pb-8"><b>Will Powell | Photography</b></h1>
+    <h1 class="text-4xl pt-10 pb-8">
+      <b>Will Powell | Photography</b>
+      <span class="icon-holder">
+        <i class="fa fa-camera" id="refresh-icon" style="cursor:pointer;"></i>
+      </span>
+    </h1>
+
+
     <section class="text-neutral-700">
       <div class="container w-full">
         <div class="flex flex-wrap w-full">
